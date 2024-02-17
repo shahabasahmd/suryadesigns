@@ -1,0 +1,267 @@
+{% extends 'partials/base.html' %}
+{% load static %}
+
+
+{% block content %}
+
+
+    <main class="main">
+        <div class="container mb-30">
+            <div class="row flex-row-reverse">
+                <div class="col-lg-4-5">
+                    {% for b in banner %}
+                    <section class="home-slider position-relative mb-30">
+                        <div class="home-slide-cover mt-30">
+                            <div class="hero-slider-1 style-4 dot-style-1 dot-style-1-position-1">
+                                 
+
+                                <div class="single-hero-slider single-animation-wrap" style="background-image: url('{{ b.banner_image1.url }}')">
+                                    <div class="slider-content">
+                                        <h1 class="display-2 mb-40">
+                                            <!-- Don’t miss amazing<br /> grocery deals -->
+                                        </h1>
+                                        
+                                    </div>
+                                </div>
+                             
+                            
+
+                                <div class="single-hero-slider single-animation-wrap" style="background-image: url('{{ b.banner_image2.url }}')">
+                                    <div class="slider-content">
+                                        <h1 class="display-2 mb-40">
+                                            <!-- Fresh Vegetables<br /> Big discount -->
+                                        </h1>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="slider-arrow hero-slider-1-arrow"></div>
+                        </div>
+                    </section>
+                    {% endfor %}
+
+                    <section class="why-choose-section">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-lg-12 text-center mb-4">
+                                    <h2>Why Choose Surya Designs?</h2>
+                                </div>
+                            </div>
+                            <div class="row mb-5">
+                                <div class="col-lg-4 mb-4">
+                                    <div class="card h-100 bg-secondary text-white">
+                                        <div class="card-body d-flex justify-content-center align-items-center">
+                                            <img src="{% static 'assets/imgs/vendor/exclusive.png' %}" alt="">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 mb-4">
+                                    <div class="card h-100 bg-secondary text-white">
+                                        <div class="card-body d-flex justify-content-center align-items-center">
+                                            <img src="{% static 'assets/imgs/vendor/PngItem_498778.png' %}" alt="">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 mb-4">
+                                    <div class="card h-100 bg-secondary text-white">
+                                        <div class="card-body d-flex justify-content-center align-items-center">
+                                            <img src="{% static 'assets/imgs/vendor/bestprice.png' %}" alt="">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    
+                    
+
+                    <!--End hero-->
+                    <section class="product-tabs section-padding position-relative">
+                        <div class="section-title style-2">
+                            <h3>Popular Products</h3>
+                            
+                        </div>
+                        <!--End nav-tabs-->
+                        <div class="tab-content" id="myTabContent">
+                            <div class="tab-pane fade show active" id="tab-one" role="tabpanel" aria-labelledby="tab-one">
+                                <div class="row product-grid-4">
+
+                                    {% for p in products %}
+<div class="col-lg-1-5 col-md-4 col-12 col-sm-6">
+    <div class="product-cart-wrap mb-30">
+        <div class="product-img-action-wrap">
+            <div class="product-img product-img-zoom">
+                <a href="{% url 'product_detail' p.pid %}">
+                    <img class="default-img" src="{{ p.image.url }}" alt="" />
+                    <img class="hover-img" src="{{ p.image_hover.url }}" alt="" />
+                </a>
+            </div>
+            <div class="product-action-1">
+                <a aria-label="Add To Wishlist" class="action-btn" href="#">
+                    <i class="fi-rs-heart"></i>
+                </a>
+                <a aria-label="Quick view" class="action-btn" data-bs-toggle="modal" data-bs-target="#quickViewModal">
+                    <i class="fi-rs-eye"></i>
+                </a>
+            </div>
+        </div>
+        <div class="product-content-wrap">
+            <div class="product-category">
+                <a href="shop-grid-right.html">{{ p.category }}</a>
+            </div>
+            <h2><a href="{% url 'product_detail' p.pid %}">{{ p.title }}</a></h2>
+            <div class="product-card-bottom">
+                <div class="product-price">
+                    <span>{{ p.price }}</span>
+                    <span class="old-price">{{ p.old_price }}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endfor %}
+
+                                    
+
+
+                                    <!--end product card-->
+                                    
+                                </div>
+                                <!--End product-grid-4-->
+                            </div>
+                            <!--En tab one-->
+                            <div class="tab-pane fade" id="tab-two" role="tabpanel" aria-labelledby="tab-two">
+                                <div class="row product-grid-4">
+                                    <div class="col-lg-1-5 col-md-4 col-12 col-sm-6">
+                                        <div class="product-cart-wrap mb-30">
+                                            <div class="product-img-action-wrap">
+                                                <div class="product-img product-img-zoom">
+                                                    <a href="shop-product-right.html">
+                                                        <img class="default-img" src="assets/imgs/shop/product-10-1.jpg" alt="" />
+                                                        <img class="hover-img" src="assets/imgs/shop/product-10-2.jpg" alt="" />
+                                                    </a>
+                                                </div>
+                                                <div class="product-action-1">
+                                                    <a aria-label="Add To Wishlist" class="action-btn" href="shop-wishlist.html"><i class="fi-rs-heart"></i></a>
+                                                    <a aria-label="Compare" class="action-btn" href="shop-compare.html"><i class="fi-rs-shuffle"></i></a>
+                                                    <a aria-label="Quick view" class="action-btn" data-bs-toggle="modal" data-bs-target="#quickViewModal"><i class="fi-rs-eye"></i></a>
+                                                </div>
+                                                <div class="product-badges product-badges-position product-badges-mrg">
+                                                    <span class="hot">Hot</span>
+                                                </div>
+                                            </div>
+                                            <div class="product-content-wrap">
+                                                <div class="product-category">
+                                                    <a href="shop-grid-right.html">Snack</a>
+                                                </div>
+                                                <h2><a href="shop-product-right.html">Seeds of Change Organic Quinoa, Brown, & Red Rice</a></h2>
+                                                <div class="product-rate-cover">
+                                                    <div class="product-rate d-inline-block">
+                                                        <div class="product-rating" style="width: 90%"></div>
+                                                    </div>
+                                                    <span class="font-small ml-5 text-muted"> (4.0)</span>
+                                                </div>
+                                                <div>
+                                                    <span class="font-small text-muted">By <a href="vendor-details-1.html">NestFood</a></span>
+                                                </div>
+                                                <div class="product-card-bottom">
+                                                    <div class="product-price">
+                                                        <span>$28.85</span>
+                                                        <span class="old-price">$32.8</span>
+                                                    </div>
+                                                    <div class="add-cart">
+                                                        <a class="add" href="shop-cart.html"><i class="fi-rs-shopping-cart mr-5"></i>Add </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                                <!--End product-grid-4-->
+                            </div>
+                            
+                            
+                            
+                            
+                            <!--En tab seven-->
+                        </div>
+                        <!--End tab-content-->
+                    
+                    <section class="banners">
+                        <div class="section-title">
+                            <h3 class="">Designer Name Plate Collections</h3>
+                        </div>
+                        <div class="row">
+                            {% for c in collections %}
+                            <div class="col-lg-4 col-md-6">
+                                <div class="banner-img">
+                                    <img src="{{ c.image.url }}" alt="" />
+                                    
+                                </div>
+                                <div class="banner-text">
+                                        <!-- <h6>
+                                            Ladder
+                                        </h6> -->
+                                        <a href="shop-grid-right.html" class="btn ">Shop Now <i class="fi-rs-arrow-small-right"></i></a>
+                                </div>
+                            </div>
+                            
+                            
+                            {% endfor %}
+                        </div>
+                    </section>
+                    <!--End banners-->
+                </div>
+                <div class="col-lg-1-5 primary-sidebar sticky-sidebar pt-30">
+                    <div class="sidebar-widget widget-category-2 mb-30">
+                        <h5 class="section-title style-1 mb-30">Category</h5>
+                        {% for c in categories %}
+                        <ul>
+                            <li>
+                                <a href="{% url 'category_product_list' c.cid %}">{{ c.title }}</a><span class="count">30</span>
+                            </li>
+
+                        </ul>
+                        {% endfor %}
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+        <section class="popular-categories section-padding">
+            <div class="container">
+                <div class="section-title">
+                    <div class="title">
+                        <h3>Browse Our Collections</h3>
+                        <a class="show-all" href="{% url 'category_list'%}">
+                            All Categories
+                            <i class="fi-rs-angle-right"></i>
+                        </a>
+                    </div>
+                    <div class="slider-arrow slider-arrow-2 flex-right carausel-8-columns-arrow" id="carausel-8-columns-arrows"></div>
+                </div>
+                <div class="carausel-8-columns-cover position-relative">
+                    <div class="carausel-8-columns" id="carausel-8-columns">
+                        {% for c in categories %}
+                        <div class="card-1">
+                            <figure class="img-hover-scale overflow-hidden">
+                                <a href="{% url 'category_product_list' c.cid %}"><img src="assets/imgs/theme/icons/category-1.svg" alt="" /></a>
+                            </figure>
+                            <h6>
+                                <a href="{% url 'category_product_list' c.cid %}">{{ c.title }}</a>
+                            </h6>
+                        </div>
+                        
+                        
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--End category slider-->
+        
+        <!--End 4 columns-->
+    </main>
+  {% endblock content %} 
+   
+    

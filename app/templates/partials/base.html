@@ -1,0 +1,292 @@
+{% load static %}
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Surya-Designs</title>
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta property="og:title" content="" />
+    <meta property="og:type" content="" />
+    <meta property="og:url" content="" />
+    <meta property="og:image" content="" />
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/x-icon" href="{% static 'assets/imgs/theme/favicon.svg' %}" >
+    <!-- Template CSS -->
+    <link rel="stylesheet" href="{% static 'assets/css/plugins/slider-range.css' %}" >
+    <link rel="stylesheet" href="{% static 'assets/css/main.css' %}" >
+</head>
+
+<body>
+    <!-- Quick view -->
+    <div class="modal fade custom-modal" id="quickViewModal" tabindex="-1" aria-labelledby="quickViewModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <div class="modal-body">
+                    <div class="row">
+
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <header class="header-area header-style-1 header-height-2">
+        
+        <div class="header-middle header-middle-ptb-1 d-none d-lg-block">
+            <div class="container">
+                <div class="header-wrap">
+                    <div class="logo logo-width-1">
+                        <a href="index.html"><img src="{% static 'assets/imgs/banner/sd-logo-removebg.png' %}" alt="logo"
+                            style="border-radius:50%; height: 100px; width: 100px !important;" /></a>
+                    </div>
+                    <div class="header-right">
+                        <div class="header-action-right justify-content-center">
+                            <div class="header-action-2">
+                                <div class="header-nav d-none d-lg-flex">
+                        
+                                    <div class="main-menu main-menu-padding-1 main-menu-lh-2 d-none d-lg-block font-heading ml-5">
+                                        <nav>
+                                            <ul>
+                                                <!-- <li class="hot-deals"><img src="{% static 'assets/imgs/theme/icons/icon-hot.svg' %}" alt="hot deals" /><a href="shop-grid-right.html">Deals</a></li> -->
+                                                <li>
+                                                    <a class="active" href="{% url 'index' %}">Home</a>
+                                                    
+                                                </li>
+                                                <li>
+                                                    <a href="page-about.html">About</a>
+                                                </li>
+            
+                                                <li>
+                                                    <a href="#">Category <i class="fi-rs-angle-down"></i></a>
+                                                    <ul class="sub-menu">
+                                                        {% for c in categories %}
+                                                        <li><a href="{% url 'category_product_list' c.cid %}">{{ c.title }}</a></li>
+                                                        {% endfor %}
+                                                        <hr>
+                                                        <li>
+                                                           <a href="#">All Categories</a>
+                                                        </li>
+            
+                                                    </ul>
+                                                </li>
+                                                <li>
+                                                    
+                                                        <a href="{% url 'wishlist' %}"><span class="lable">Wishlist</span></a>
+                                                    
+                                                </li>
+                                                <li class="nav-item dropdown">
+                                                    {% if user.is_authenticated %}
+                                                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                                            Account
+                                                        </a>
+                                                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                                            <li><a class="dropdown-item" href="#"><i class="fi fi-rs-user mr-2"></i>{{ user.username }}</a></li>
+                                                            <li><a class="dropdown-item" href="#"><i class="fi fi-rs-sign-out mr-2"></i>Sign out</a></li>
+                                                        </ul>
+                                                    {% else %}
+                                                        <a class="nav-link" href="{% url 'userauths:sign-in' %}">Login</a>
+                                                    {% endif %}
+                                                </li>
+                                                
+                                                
+                                                
+                                                
+                                                <li>
+
+                                                </li>
+                                                
+            
+                                                
+                                            </ul>
+                                        </nav>
+                                    </div>
+                                </div>
+                                
+                           
+                                
+
+
+                           
+                            </div>
+                        </div>
+                    </div>
+
+                    
+                </div>
+            </div>
+        </div>
+        <div class="header-bottom header-bottom-bg-color sticky-bar">
+            <div class="container">
+                <div class="header-wrap header-space-between position-relative">
+                    <div class="logo logo-width-1 d-block d-lg-none">
+                        <a href="index.html"><img src="{% static 'assets/imgs/banner/sd-logo-removebg.png' %}" alt="logo"
+                            style="border-radius:50%; height: 100px; width: 100px;" /></a>
+                    </div>
+                    
+                    <div class="header-action-icon-2 d-block d-lg-none">
+                        <div class="burger-icon burger-icon-white">
+                            <span class="burger-icon-top"></span>
+                            <span class="burger-icon-mid"></span>
+                            <span class="burger-icon-bottom"></span>
+                        </div>
+                    </div>
+                    <div class="header-action-right d-block d-lg-none">
+                        <div class="header-action-2">
+                            <div class="header-action-icon-2">
+                                <a href="shop-wishlist.html">
+                                    <img alt="Nest" src="{% static 'assets/imgs/theme/icons/icon-heart.svg' %}" />
+                                    <span class="pro-count white">4</span>
+                                </a>
+                            </div>
+                           
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+      <div class="mobile-header-active mobile-header-wrapper-style">
+        <div class="mobile-header-wrapper-inner">
+            <div class="mobile-header-top">
+                <div class="mobile-header-logo">
+
+
+                    <a href="index.html"><img src="{% static 'assets/imgs/banner/sd-logo-removebg.png' %}" alt="logo" style="width: 80px; height: 80px;"/></a>
+                </div>
+                <div class="mobile-menu-close close-style-wrap close-style-position-inherit">
+                    <button class="close-style search-close">
+                        <i class="icon-top"></i>
+                        <i class="icon-bottom"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="mobile-header-content-area">
+                <div class="mobile-search search-style-3 mobile-header-border">
+                    <form action="#">
+                        <input type="text" placeholder="Search for items…" />
+                        <button type="submit"><i class="fi-rs-search"></i></button>
+                    </form>
+                </div>
+                <div class="mobile-menu-wrap mobile-header-border">
+                    <!-- mobile menu start -->
+                    <nav>
+                        <ul class="mobile-menu font-heading">
+                            <li class="menu-item-has-children">
+                                <a href="index.html">Home</a>
+                                
+                            </li>
+                            <li>
+                                <a href="#">Category <i class="fi-rs-angle-down"></i></a>
+                                <ul class="sub-menu">
+                                    {% for c in categories %}
+                                    <li><a href="{% url 'category_product_list' c.cid %}">{{ c.title }}</a></li>
+                                    {% endfor %}
+                                    <hr>
+                                    <li>
+                                       <a href="#">All Categories</a>
+                                    </li>
+                                    <li>
+                                                    
+                                        <a href="page-account.html"><span class="lable ml-0">Account</span></a>
+                                        <div class="cart-dropdown-wrap cart-dropdown-hm2 account-dropdown">
+                                            <ul>
+                                                <li><a href="page-account.html"><i class="fi fi-rs-user mr-10"></i>My Account</a></li>
+                    
+                                                <li><a href="page-login.html"><i class="fi fi-rs-sign-out mr-10"></i>Sign out</a></li>
+                                            </ul>
+                                        </div>
+                                    
+                                </li>
+                                <li>
+                                    <a href="#">Contact</a>
+                                </li>
+
+                                </ul>
+                            </li>
+
+
+                        </ul>
+                    </nav>
+                    <!-- mobile menu end -->
+                </div>
+                
+            </div>
+        </div>
+    </div>
+    <!--End header-->
+
+{% block content %}
+{% endblock content %}
+<a href="https://wa.me/9846335275" target="_blank" rel="noopener noreferrer" class="position-fixed top-0 end-0 m-3">
+    <img src="{% static 'assets/imgs/vendor/whatsapp-icon-logo-BDC0A8063B-seeklogo.com.png' %}" alt="WhatsApp Icon" class="img-fluid" width="60" height="60">
+</a>
+
+ <footer class="main">
+
+        
+        
+        <div class="container pb-30">
+            <div class="row align-items-center">
+                <div class="col-12 mb-30">
+                    <div class="footer-bottom"></div>
+                </div>
+                
+                <div class="col-xl-4 col-lg-6 text-center d-none d-xl-block">
+                    <div class="hotline d-lg-inline-flex mr-30">
+                        <img src="assets/imgs/theme/icons/phone-call.svg" alt="hotline" />
+                        <p>1900 - 6666<span>Working 8:00 - 22:00</span></p>
+                    </div>
+                    <div class="hotline d-lg-inline-flex">
+                        <img src="assets/imgs/theme/icons/phone-call.svg" alt="hotline" />
+                        <p>1900 - 8888<span>24/7 Support Center</span></p>
+                    </div>
+                </div>
+                <div class="col-xl-4 col-lg-6 col-md-6 text-end d-none d-md-block">
+                    <div class="mobile-social-icon">
+                        <h6>Follow Us</h6>
+                        <a href="#"><img src="assets/imgs/theme/icons/icon-facebook-white.svg" alt="" /></a>
+                        <a href="#"><img src="assets/imgs/theme/icons/icon-twitter-white.svg" alt="" /></a>
+                        <a href="#"><img src="assets/imgs/theme/icons/icon-instagram-white.svg" alt="" /></a>
+                        <a href="#"><img src="assets/imgs/theme/icons/icon-pinterest-white.svg" alt="" /></a>
+                        <a href="#"><img src="assets/imgs/theme/icons/icon-youtube-white.svg" alt="" /></a>
+                    </div>
+                    <p class="font-sm">Up to 15% discount on your first subscribe</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+   
+
+<!-- Vendor JS-->
+
+    <script src="{% static 'assets/js/vendor/modernizr-3.6.0.min.js' %}"></script>
+    <script src="{% static 'assets/js/vendor/jquery-3.6.0.min.js' %}"></script>
+    <script src="{% static 'assets/js/vendor/jquery-migrate-3.3.0.min.js' %}"></script>
+    <script src="{% static 'assets/js/vendor/bootstrap.bundle.min.js' %}"></script>
+    <script src="{% static 'assets/js/plugins/slick.js' %}"></script>
+    <script src="{% static 'assets/js/plugins/jquery.syotimer.min.js' %}"></script>
+    <script src="{% static 'assets/js/plugins/wow.js' %}"></script>
+    <script src="{% static 'assets/js/plugins/slider-range.js' %}"></script>
+    <script src="{% static 'assets/js/plugins/perfect-scrollbar.js' %}"></script>
+    <script src="{% static 'assets/js/plugins/magnific-popup.js' %}"></script>
+    <script src="{% static 'assets/js/plugins/select2.min.js' %}"></script>
+    <script src="{% static 'assets/js/plugins/waypoints.js' %}"></script>
+    <script src="{% static 'assets/js/plugins/counterup.js' %}"></script>
+    <script src="{% static 'assets/js/plugins/jquery.countdown.min.js' %}"></script>
+    <script src="{% static 'assets/js/plugins/images-loaded.js' %}"></script>
+    <script src="{% static 'assets/js/plugins/isotope.js' %}"></script>
+    <script src="{% static 'assets/js/plugins/scrollup.js' %}"></script>
+    <script src="{% static 'assets/js/plugins/jquery.vticker-min.js' %}"></script>
+    <script src="{% static 'assets/js/plugins/jquery.theia.sticky.js' %}"></script>
+    <script src="{% static 'assets/js/plugins/jquery.elevatezoom.js' %}"></script>
+    <!-- Template  JS -->
+    <script src="{% static './assets/js/main.js' %}"></script>
+    <script src="{% static './assets/js/shop.js' %}"></script>
+</body>
+
+</html>

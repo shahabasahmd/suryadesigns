@@ -1,0 +1,254 @@
+{% extends 'partials/base.html' %}
+{% load static %}
+
+
+{% block content %}
+   
+    <main class="main">
+        <div class="page-header breadcrumb-wrap">
+            <div class="container">
+                <div class="breadcrumb">
+                    <a href="{% url 'index' %}" rel="nofollow"><i class="fi-rs-home mr-5"></i>Home</a>
+                    <span></span> <a href="shop-grid-right.html">{{ p.category }}</a> <span></span>{{ p.title }}
+                </div>
+            </div>
+        </div>
+        <div class="container mb-30">
+            <div class="row">
+                <div class="col-xl-20 col-lg-12 m-auto">
+                    <div class="row">
+                        <div class="col-xl-9">
+                            <div class="product-detail accordion-detail">
+                                <div class="row mb-50 mt-30">
+                                    <div class="col-md-6 col-sm-12 col-xs-12 mb-md-0 mb-sm-5">
+                                        <div class="detail-gallery">
+                                            <span class="zoom-icon"><i class="fi-rs-search"></i></span>
+                                            <!-- MAIN SLIDES -->
+                                            <div class="product-image-slider">
+                                                <figure class="border-radius-10">
+                                                    <img src="{{ p.image.url }}" alt="product image" />
+                                                </figure>
+
+                                                {% for p in p_image %}
+                                                <figure class="border-radius-10">
+                                                    <img id="productImage" src="{{ p.images.url }}" alt="product image" />
+                                                </figure>
+
+                                                {% endfor %}
+                                                
+                                            </div>
+                                            <!-- THUMBNAILS -->
+                                            <div class="slider-nav-thumbnails">
+                                                <div><img src="{{ p.image.url }}" alt="product image" /></div>
+                                                 {% for p in p_image %}
+                                                <div><img src="{{ p.images.url }}" alt="product image" /></div>
+                                                  {% endfor %}
+                                            </div>
+                                        </div>
+                                        <!-- End Gallery -->
+                                    </div>
+                                    <div class="col-md-6 col-sm-12 col-xs-12">
+                                        <div class="detail-info pr-30 pl-30">
+                                            <!-- <span class="stock-status out-stock"> Sale Off </span> -->
+                                            <h2 class="title-detail">{{ p.title }}</h2>
+                                            <div class="product-detail-rating">
+                                                <div class="product-rate-cover text-end">
+                                                    <div class="product-rate d-inline-block">
+                                                        <div class="product-rating" style="width: 90%"></div>
+                                                    </div>
+                                                    <span class="font-small ml-5 text-muted"> (32 reviews)</span>
+                                                </div>
+                                            </div>
+                                            <div class="clearfix product-price-cover">
+                                                <div class="product-price primary-color float-left">
+                                                    <span class="current-price text-brand">{{ p.price }}</span>
+                                                    <span>
+                                                        <span class="save-price font-md color3 ml-15">26% Off</span>
+                                                    <span class="old-price font-md ml-15">{{ p.old_price }} </span>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                            <div class="short-desc mb-30">
+                                                <p class="font-lg">{{ p.description }}</p>
+                                            </div>
+
+                                            <strong class="mr-10">Size : </strong>
+                                            <div class="attr-detail attr-size mb-30">
+                                                <ul class="list-filter size-filter font-small">
+                                                    <li><a href="#">Small i.e 148mm * 104mm * 5mm</a></li>
+                                                    <li class="active"><a href="#">Square i.e 210mm * 148mm *5mm</a></li>
+                                                    <li><a href="#">Medium i.e 210mm * 148mm * 5mm</a></li>
+                                                    <li><a href="#">Long i.e 297 mm * 100mm * 5mm</a></li>
+                                                    <li><a href="#">Large i.e 297 mm * 148mm * 5mm</a></li>
+                                                </ul>
+                                            </div>
+                                            <span id="title">A</span>
+                                            <div class="attr-detail attr-size mb-30">
+                                                <form action="">
+                                                    Number:
+                                                    <!-- <input type="text"> -->
+                                                    <textarea id="inputtext" name="" cols="30" rows="5"></textarea>
+                                                    <button>-</button>
+                                                    
+                                                    <button>+</button>
+                                                </form>
+                                            </div>
+
+                                            <div class="detail-extralink mb-50">
+                                                <!-- <div class="detail-qty border radius">
+                                                    <a href="#" class="qty-down"><i class="fi-rs-angle-small-down"></i></a>
+                                                    <span class="qty-val">1</span>
+                                                    <a href="#" class="qty-up"><i class="fi-rs-angle-small-up"></i></a>
+                                                </div> -->
+                                                <div class="product-extra-link2">
+                                                    <button type="button" class="button button-add-to-cart" id="screenshotButton">Screenshot your preview</button>
+                                                    {% if p.is_in_wishlist %}
+                                                    <a aria-label="Add To Wishlist" class="action-btn btn-danger" href="#">added to wishlist
+                                                        <i class="fi-rs-heart" style="color: red;"></i>
+                                                    </a>
+                                                {% else %}
+                                                    <a aria-label="Add To Wishlist" class="action-btn hover-up" href="{% url 'add_to_wishlist' p.id %}">
+                                                        <i class="fi-rs-heart"></i>
+                                                    </a>
+                                                {% endif %}
+                                            
+                                                </div>
+                                            </div>
+                                            
+                                        </div>
+                                        <!-- Detail Info -->
+                                    </div>
+                                </div>
+                                
+                                <div class="product-info">
+                                    <div class="tab-style3">
+                                        <ul class="nav nav-tabs text-uppercase">
+                                            <li class="nav-item">
+                                                <a class="nav-link active" id="Description-tab" data-bs-toggle="tab" href="#Description">Description</a>
+                                            </li>
+                                            
+                                           
+                                            <li class="nav-item">
+                                                <a class="nav-link" id="Reviews-tab" data-bs-toggle="tab" href="#Reviews">Reviews (3)</a>
+                                            </li>
+                                        </ul>
+                                        <div class="tab-content shop_info_tab entry-main-content">
+                                            <div class="tab-pane fade show active" id="Description">
+                                                <div class="">
+                                                    {{ p.description }}
+                                                </div>
+                                            </div>
+                                          
+                                            
+                                            <div class="tab-pane fade" id="Reviews">
+                                                <div class="comments-area">
+                                                    <div class="row">
+                                                        <div class="col-lg-8">
+                                                            <h4 class="mb-30">Customer questions & answers</h4>
+                                                            {% if reviews %}
+                                                                {% for review in reviews %}
+                                                                    <div class="single-comment justify-content-between d-flex">
+                                                                        <div class="user justify-content-between d-flex">
+                                                                            <div class="thumb text-center">
+                                                                                <!-- Assuming you have a profile picture for the user -->
+
+                                                                                <a href="#" class="font-heading text-brand">{{ review.createdby.username }}</a>
+                                                                            </div>
+                                                                            <div class="desc">
+                                                                                <div class="d-flex justify-content-between mb-10">
+                                                                                    <div class="d-flex align-items-center">
+                                                                                        <!-- Format the created_at timestamp as needed -->
+                                                                                        <span class="font-xs text-muted">{{ review.created_at }}</span>
+                                                                                    </div>
+                                                                                    
+                                                                                </div>
+                                                                                <p class="mb-10">{{ review.content }}</p>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                {% endfor %}
+                                                            {% else %}
+                                                                <p>No reviews available.</p>
+                                                            {% endif %}
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                
+                                                
+                                                <form method="post" action="{% url 'add_review' %}">
+                                                    {% csrf_token %}
+                                                    <div class="form-group">
+                                                        <input type="hidden" name="product_id" value="{{ p.id }}"> <!-- Assuming you pass the product ID to the form -->
+                                                        <input type="text" name="review_text" placeholder="Enter your review" class="form-control">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <button type="submit" class="button button-contactForm">Submit Review</button>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row mt-60">
+                                    {% if products %}
+                                    <div class="col-12">
+                                        <h2 class="section-title style-1 mb-30">Related products</h2>
+                                    </div>
+                                    {% endif %}
+                                    <div class="col-12">
+                                        <div class="row related-products">
+                                            {% for p in products %}
+                                            <div class="col-lg-3 col-md-4 col-12 col-sm-6">
+                                                <div class="product-cart-wrap hover-up">
+                                                    <div class="product-img-action-wrap">
+                                                        <div class="product-img product-img-zoom">
+                                                            <a href="{% url 'core:product_detail' p.pid %}" tabindex="0">
+                                                                <img class="default-img" src="{{ p.image.url }}" alt="" />
+                                                                <img class="hover-img" src="{{ p.image.url }}" alt="" />
+                                                            </a>
+                                                        </div>
+                                                        <div class="product-action-1">
+                                                            <a aria-label="Quick view" class="action-btn small hover-up" data-bs-toggle="modal" data-bs-target="#quickViewModal"><i class="fi-rs-search"></i></a>
+                                                            <a aria-label="Add To Wishlist" class="action-btn small hover-up" href="shop-wishlist.html" tabindex="0"><i class="fi-rs-heart"></i></a>
+                                                            <a aria-label="Compare" class="action-btn small hover-up" href="shop-compare.html" tabindex="0"><i class="fi-rs-shuffle"></i></a>
+                                                        </div>
+                                                        <div class="product-badges product-badges-position product-badges-mrg">
+                                                           
+                                                        </div>
+                                                    </div>
+                                                    <div class="product-content-wrap">
+                                                        <h2><a href="{% url 'core:product_detail' p.pid %}" tabindex="0">{{ p.title }}</a></h2>
+                                                        <div class="rating-result" title="90%">
+                                                            <span> </span>
+                                                        </div>
+                                                        <div class="product-price">
+                                                            <span>{{ p.price }} </span>
+                                                            <span class="old-price">{{ p.old_price }}</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                           {% endfor %}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        const textarea = document.getElementById("inputtext");
+        const title  =  document.getElementById("title");
+
+        textarea.addEventListener("input",(e)=>{
+            console.log(e.target.value);
+            title.innerHTML=e.target.value;
+        })
+    </script>
+   {% endblock content %} 

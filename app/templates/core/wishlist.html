@@ -1,0 +1,61 @@
+
+{% extends 'partials/base.html' %}
+{% load static %}
+
+
+{% block content %}
+    
+    <main class="main">
+        <div class="page-header breadcrumb-wrap">
+            <div class="container">
+                <div class="breadcrumb">
+                    <a href="index.html" rel="nofollow"><i class="fi-rs-home mr-5"></i>Home</a>
+                    <span></span> Shop <span></span> Fillter
+                </div>
+            </div>
+        </div>
+        <div class="container mb-30 mt-50">
+            <div class="row">
+                <div class="col-xl-10 col-lg-12 m-auto">
+                    <div class="mb-50">
+                        <h1 class="heading-2 mb-10">Your Wishlist</h1>
+                        <h6 class="text-body">There are <span class="text-brand">{{ num_of_products }}</span> products in this list</h6>
+                    </div>
+                    <div class="table-responsive shopping-summery">
+                        <table class="table table-wishlist">
+                            <thead>
+                                <tr class="main-heading">
+                                    
+                                    <th scope="col"  class="ml-3">Product</th>
+                                    <th scope="col">Name</th>
+                                    <th scope="col">Price</th>
+                                    <th scope="col" class="end">Remove</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for item in wishlist_items %}
+                                <tr>
+                                    <td class="image product-thumbnail"><img src="{{ item.product.image.url }}" alt="{{ item.product.title }}" /></td>
+                                    <td class="product-des product-name">
+                                        <h6><a class="product-name mb-10" href="{% url 'product_detail' item.product.pid %}">{{ item.product.title }}</a></h6>
+                                    </td>
+                                    <td class="price" data-title="Price">
+                                        <h3 class="text-brand">{{ item.product.price }}</h3>
+                                    </td>
+                                    <td class="text-right" data-title="Cart">
+                                        <form action="{% url 'remove_from_wishlist' item.id %}" method="post">
+                                            {% csrf_token %}
+                                            <button type="submit" class="btn btn-sm btn-danger">Remove</button>
+                                        </form>
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    {% endblock content %}
+    
