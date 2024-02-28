@@ -102,6 +102,7 @@
                                                 </div> -->
                                                 <div class="product-extra-link2">
                                                     <button type="button" class="button button-add-to-cart" id="screenshotButton">Screenshot your preview</button>
+
                                                     {% if p.is_in_wishlist %}
                                                     <a aria-label="Add To Wishlist" class="action-btn btn-danger" href="#">added to wishlist
                                                         <i class="fi-rs-heart" style="color: red;"></i>
@@ -241,8 +242,27 @@
             </div>
         </div>
     </main>
-
+    
     <script>
+    const screenshotButton = document.getElementById("screenshotButton");
+
+screenshotButton.addEventListener("click", () => {
+    // Assuming productImageURL is the URL of the image you want to send via WhatsApp
+    const productImageURL = encodeURIComponent(document.querySelector(".product-image-slider img").src);
+    
+    // Construct the WhatsApp message with the image URL
+    const whatsappMessage = `Check out this product: ${productImageURL}`;
+
+    // Construct the WhatsApp URL
+    const recipientPhoneNumber = '+916235503030'; // Replace with the recipient's phone number
+    const whatsappURL = `https://wa.me/${recipientPhoneNumber}?text=${whatsappMessage}`;
+
+    // Open WhatsApp in a new tab with the pre-filled message
+    window.open(whatsappURL, "_blank");
+});
+
+
+
         const textarea = document.getElementById("inputtext");
         const title  =  document.getElementById("title");
 
@@ -250,5 +270,8 @@
             console.log(e.target.value);
             title.innerHTML=e.target.value;
         })
+
+
+        
     </script>
    {% endblock content %} 

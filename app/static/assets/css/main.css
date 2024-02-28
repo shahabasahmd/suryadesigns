@@ -12613,3 +12613,33 @@ footer .hotline img {
 
 
 
+  .slider-content {
+    position: relative;
+    overflow: hidden;
+}
+
+.offer-text {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background-color: #FFF;
+    padding: 8px 12px;
+    border-radius: 50%;
+    font-size: 14px;
+    font-weight: 600;
+    color: #444;
+    text-transform: uppercase;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.offer-text::before {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: -12px;
+    width: 0;
+    height: 0;
+    border-left: 12px solid transparent;
+    border-right: 12px solid transparent;
+    border-top: 12px solid #FFF;
+}

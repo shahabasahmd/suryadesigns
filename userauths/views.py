@@ -1,6 +1,6 @@
 from django.shortcuts import render,redirect,HttpResponse
 from userauths.forms import UserRegisterForm
-from django.contrib.auth import login,authenticate
+from django.contrib.auth import login,authenticate,logout
 from django.contrib import messages
 from django.conf import settings
 
@@ -48,3 +48,11 @@ def login_view(request):
             return render(request, 'userauths/login.html', {'error_message': 'Invalid email or password'})
 
     return render(request,"userauths/login.html")
+
+
+
+
+def logout_view(request):
+    # Log out the user
+    logout(request)
+    return redirect('index')

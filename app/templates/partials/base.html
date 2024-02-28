@@ -17,6 +17,9 @@
     <!-- Template CSS -->
     <link rel="stylesheet" href="{% static 'assets/css/plugins/slider-range.css' %}" >
     <link rel="stylesheet" href="{% static 'assets/css/main.css' %}" >
+    {% block styles %}
+    
+    {% endblock styles %}
 </head>
 
 <body>
@@ -57,7 +60,7 @@
                                                     
                                                 </li>
                                                 <li>
-                                                    <a href="page-about.html">About</a>
+                                                    <a href="#">About</a>
                                                 </li>
             
                                                 <li>
@@ -85,7 +88,7 @@
                                                         </a>
                                                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                                             <li><a class="dropdown-item" href="#"><i class="fi fi-rs-user mr-2"></i>{{ user.username }}</a></li>
-                                                            <li><a class="dropdown-item" href="#"><i class="fi fi-rs-sign-out mr-2"></i>Sign out</a></li>
+                                                            <li><a class="dropdown-item" href="{% url 'userauths:logout' %}"><i class="fi fi-rs-sign-out mr-2"></i>Sign out</a></li>
                                                         </ul>
                                                     {% else %}
                                                         <a class="nav-link" href="{% url 'userauths:sign-in' %}">Login</a>

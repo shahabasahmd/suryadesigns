@@ -38,6 +38,7 @@ class banner(models.Model):
     heading = models.CharField(max_length=100)
     banner_image1 = models.ImageField(upload_to='banners')
     banner_image2 = models.ImageField(upload_to='banners')
+    offer_text = models.CharField(max_length=100,default='')
 
     class Meta:
         verbose_name_plural = "banners"
@@ -80,7 +81,7 @@ class Category_banner(models.Model):
 class Product(models.Model):
     pid = ShortUUIDField(unique=True, length=10, max_length=20,prefix = "cat",alphabet="abcdefgh12345")
     category = models.ForeignKey(Category,on_delete=models.SET_NULL,null=True,related_name="category")
-    title = models.CharField(max_length=100,default="fresh")
+    title = models.CharField(max_length=100,default="")
     image = models.ImageField(upload_to="user_directory_path",default="product.jpg")
     image_hover = models.ImageField(upload_to="user_directory_path",default="product.jpg")
     description = models.TextField(null=True,blank=True,default="this is the product")

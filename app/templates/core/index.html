@@ -2,7 +2,7 @@
 {% load static %}
 
 
-{% block content %}
+{% block content %}s
 
 
     <main class="main">
@@ -10,35 +10,40 @@
             <div class="row flex-row-reverse">
                 <div class="col-lg-4-5">
                     {% for b in banner %}
-                    <section class="home-slider position-relative mb-30">
-                        <div class="home-slide-cover mt-30">
-                            <div class="hero-slider-1 style-4 dot-style-1 dot-style-1-position-1">
-                                 
+<section class="home-slider position-relative mb-30">
+    <div class="home-slide-cover mt-30">
+        <div class="hero-slider-1 style-4 dot-style-1 dot-style-1-position-1 position-relative">
+            <div class="single-hero-slider single-animation-wrap" style="background-image: url('{{ b.banner_image1.url }}')">
+                <div class="slider-content position-relative">
+                    <h1 class="display-2 mb-40">
+                        <!-- Don’t miss amazing<br /> grocery deals -->
+                    </h1>
+                    {% if b.offer_text %}
+                    <div class="position-relative top-2 start-0 translate-middle rounded-circle bg-primary text-danger p-3" style="width: 150px; height: 150px;">
+                        <p>{{ b.offer_text }}</p>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="single-hero-slider single-animation-wrap" style="background-image: url('{{ b.banner_image2.url }}')">
+                <div class="slider-content position-relative">
+                    <h1 class="display-2 mb-40">
+                        <!-- Fresh Vegetables<br /> Big discount -->
+                    </h1>
+                    {% if b.offer_text %}
+                    <div class="position-absolute top-0 start-0 translate-middle rounded-circle bg-primary text-white p-3" style="width: 150px; height: 150px;">
+                        <p>{{ b.offer_text }}</p>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        <div class="slider-arrow hero-slider-1-arrow"></div>
+    </div>
+</section>
+{% endfor %}
 
-                                <div class="single-hero-slider single-animation-wrap" style="background-image: url('{{ b.banner_image1.url }}')">
-                                    <div class="slider-content">
-                                        <h1 class="display-2 mb-40">
-                                            <!-- Don’t miss amazing<br /> grocery deals -->
-                                        </h1>
-                                        
-                                    </div>
-                                </div>
-                             
-                            
-
-                                <div class="single-hero-slider single-animation-wrap" style="background-image: url('{{ b.banner_image2.url }}')">
-                                    <div class="slider-content">
-                                        <h1 class="display-2 mb-40">
-                                            <!-- Fresh Vegetables<br /> Big discount -->
-                                        </h1>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="slider-arrow hero-slider-1-arrow"></div>
-                        </div>
-                    </section>
-                    {% endfor %}
-
+                    
                     <section class="why-choose-section">
                         <div class="container">
                             <div class="row">
